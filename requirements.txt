@@ -1,0 +1,20 @@
+# --- Core de Automatización ---
+selenium==4.25.0
+webdriver-manager==4.0.2
+
+# --- Frameworks de Testing ---
+pytest==8.3.3
+pytest-bdd==7.1.1
+behave==1.2.6
+
+# --- Soporte y utilidades ---
+python-dotenv==1.0.1
+requests==2.32.3
+
+# --- Opcional (para reportes bonitos) ---
+pytest-html==4.1.1
+pytest-metadata==3.1.1
+
+# --- Tipado y linting opcional ---
+flake8==7.1.1
+mypy==1.11.2
