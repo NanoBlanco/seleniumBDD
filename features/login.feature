@@ -3,8 +3,7 @@ Feature: Login de usuario
   Quiero iniciar sesión con mis credenciales
   Para acceder al catálogo de productos
 
-
-  Scenario: Login exitoso con credenciales válidas
+  , Scenario: Login exitoso con credenciales válidas
     Given el usuario está en la página de inicio
     When el usuario navega al formulario de login
     And ingresa credenciales válidas

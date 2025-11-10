@@ -5,6 +5,7 @@ class LoginPage(BasePage):
     USERNAME_INPUT = (By.ID, "username")
     PASSWORD_INPUT = (By.ID, "password")
     LOGIN_BUTTON = (By.XPATH, "//button[contains(text(),'Entrar')]")
+    USER_MENU = (By.ID, "user-menu")
 
     def login(self, username, password):
         self.send_keys(self.USERNAME_INPUT, username)

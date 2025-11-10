@@ -1,6 +1,9 @@
 from behave import given, when, then
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 @given('el usuario está en la página de inicio')
 def step_open_home(context):
@@ -18,7 +21,18 @@ def step_login_valid(context):
 
 @then('debería ingresar al catálogo de productos')
 def step_verify_login(context):
-    assert "catalogo" in context.driver.current_url.lower() or "productos" in context.driver.page_source.lower()
+    wait = WebDriverWait(context.driver, 10)
+    user_menu = wait.until(EC.visibility_of_element_located((By.ID, "user-menu")))
+
+    # Verificar que el texto del botón corresponda al usuario logueado
+    user_name = user_menu.text.strip()
+    assert user_name == "Emily", f"El usuario mostrado ('{user_name}') no es el esperado ('Emily')"
+
+    # Verificar que el botón de login ya no esté visible
+    login_buttons = context.driver.find_elements(By.ID, "login-btn")
+    login_visible = any(btn.is_displayed() for btn in login_buttons)
+
+    assert not login_visible, "El botón de login sigue visible tras iniciar sesión"
 
 @when('ingresa credenciales inválidas')
 def step_login_invalid(context):
